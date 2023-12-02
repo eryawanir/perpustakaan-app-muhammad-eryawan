@@ -7,16 +7,79 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function getDataUser(Request $request) {
-        $nama = $request->get('nama');
-        $email = $request->get('email');
 
-        $arrNama = [
-            'nama' => $nama,
-            'email' => $email
+    public function index () {
+        $data = [
+            [
+                'nama' => 'ilman',
+                'email' => 'ilmannurhakim0@gmail.com',
+                'telp' => '08232323232',
+                'alamat' => [
+                    'street' => 'jl. dago',
+                    'postcode' => '494949'
+                ]
+            ],
+            [
+                'nama' => 'Doni',
+                'email' => 'doni@gmail.com',
+                'telp' => '08982323',
+                'alamat' => [
+                    'street' => 'jl. kopo',
+                    'postcode' => '212121'
+                ]
+            ],
+            [
+                'nama' => 'Ahmad',
+                'email' => 'ahmad@gmail.com',
+                'telp' => '0862323',
+                'alamat' => [
+                    'street' => 'jl. buah batu',
+                    'postcode' => '454545'
+                ]
+            ]
         ];
 
-        return json_encode($arrNama);
+        $data2 = [
+            [
+                'nama' => 'Ali',
+                'email' => 'ali@gmail.com',
+                'telp' => '0862323',
+                'alamat' => [
+                    'street' => 'jl. lembang',
+                    'postcode' => '454545'
+                ]
+            ]
+        ];
+
+        // debug string
+        // echo('sdsdsd');
+
+        //debug string / array
+        // var_dump($data);
+        dd($data);
+
+        $data = array_merge($data, $data2);
+
+        $id = '111';
+        return view('users/user', compact('data', 'id'));
+
+    }
+
+    public function post() {
+
+    }
+
+
+
+
+
+
+
+
+
+    public function getDataUser(Request $request) {
+
+
     }
 
     public function createDataUser(Request $request) {
