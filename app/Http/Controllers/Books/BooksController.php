@@ -53,10 +53,8 @@ class BooksController extends Controller
             if(isset($body['book_name'])){
                 $model->create($body);
                 return true;
-                // return redirect('books/index')->with('status', $sukses);
             } else {
                 return false;
-                // return redirect('books/index')->with('status', $gagal);
             }
 
         } catch (Exception $e) {
@@ -72,10 +70,8 @@ class BooksController extends Controller
             if(isset($body['book_name'])){
                 $model->where('id', $body['id'])->update($body);
                 return true;
-                // return redirect('books/index')->with('status', $sukses);
             } else {
                 return false;
-                // return redirect('books/index')->with('status', $gagal);
             }
 
         } catch (Exception $e) {
@@ -84,13 +80,14 @@ class BooksController extends Controller
     }
 
     public function deleteBook(Request $request){
+        // ambil param dari view
         $id = $request->get('id');
         try{
             $model = new Books();
             $model->find($id)->delete();
-            return redirect('books/index')->with('status', 'Delete Sukses');
+            return redirect('books/index')->with('alert', 'Delete Sukses');
         } catch(Exception $e){
-            return redirect('books/index')->with('status', 'Delete Gagal');
+            return redirect('books/index')->with('alert', 'Delete Gagal');
         }
     }
 }

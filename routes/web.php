@@ -30,6 +30,6 @@ Route::group(['prefix' => 'users'], function () {
 Route::group(['prefix' => 'books'], function () {
     Route::get('/index', [BooksController::class, 'index']);
     Route::post('/save-book', [BooksController::class, 'saveBook']);
-    Route::get('/delete-book', [BooksController::class, 'deleteBook']);
+    Route::delete('/delete-book', [BooksController::class, 'deleteBook']);
 });
 
