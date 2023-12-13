@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Authors\AuthorController;
 use App\Http\Controllers\Books\BooksController;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
@@ -31,5 +32,10 @@ Route::group(['prefix' => 'books'], function () {
     Route::get('/index', [BooksController::class, 'index']);
     Route::post('/save-book', [BooksController::class, 'saveBook']);
     Route::delete('/delete-book', [BooksController::class, 'deleteBook']);
+});
+
+Route::group(['prefix' => 'authors'], function () {
+    Route::get('/index', [AuthorController::class, 'index']);
+    Route::post('/save-authors', [AuthorController::class, 'saveAuthors']);
 });
 
