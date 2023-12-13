@@ -30,7 +30,15 @@
             <tr>
                 <td>Author</td>
                 <td>:</td>
-                <td><input type="text" name="author" id="author"></td>
+                {{-- <td><input type="text" name="author" id="author"></td> --}}
+                <td>
+                    <select name="author_id" id="author">
+                        <option value="">-- Pilih Author --</option>
+                        @foreach ($dataAuthor as $a)
+                        <option value="{{ $a['author_id'] }}">{{ $a['author_name'] }}</option>
+                        @endforeach
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td colspan="2">
@@ -56,13 +64,13 @@
             <td>{{ $num++ }}</td>
             <td>{{ $b['id'] }}</td>
             <td>{{ $b['book_name'] }}</td>
-            <td>{{ $b['author'] }}</td>
+            <td>{{ $b['author_name'] }}</td>
             <td>{{ $b['published_at'] }}</td>
             <td>
                 <button id="button-edit" class="button-edit"
                     data-id="{{ $b['id'] }}"
                     data-name="{{ $b['book_name'] }}"
-                    data-author="{{ $b['author'] }}">Edit</button>
+                    data-author="{{ $b['author_id'] }}">Edit</button>
             </td>
             <td>
                 <form action="{{ url('/books/delete-book?id=').$b['id'] }}" method="post">

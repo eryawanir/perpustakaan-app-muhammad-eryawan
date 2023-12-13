@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Books;
 
+use App\Http\Controllers\Authors\AuthorController;
 use App\Http\Controllers\Controller;
 use App\Models\Books;
 use Exception;
@@ -13,20 +14,26 @@ class BooksController extends Controller
 
         $model = new Books();
         $data = $model->select(
-            'id',
+            'books.id',
             'book_name',
-            'author',
+            'authors.author_id',
+            'authors.author_name',
             'published_at',
-        )->get()->toArray();
+        )
+        ->leftJoin('authors', 'books.author_id', '=', 'authors.author_id')
+        ->get()->toArray();
 
-        return view('books/index', compact('data'));
+        $dataAuthor = AuthorController::getAuthors();
+
+        return view('books/index', compact('data', 'dataAuthor'));
     }
 
     public function saveBook(Request $request){
         $post = $request->post();
+
         $body['id'] = $post['id'];
         $body['book_name'] = $post['book_name'];
-        $body['author'] = $post['author'];
+        $body['author_id'] = $post['author_id'];
 
         $sukses = 'Data Sukses Disimpan!';
         $gagal = 'Data Gagal Disimpan!';
