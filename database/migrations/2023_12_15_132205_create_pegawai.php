@@ -19,6 +19,7 @@ class CreatePegawai extends Migration
             $table->string('no_telp', 15)->nullable();
             $table->string('email', 32)->nullable();
             $table->string('nik', 32)->nullable();
+            $table->timestamp('tgl_lahir')->nullable();
             $table->text('alamat')->nullable();
             $table->boolean('is_active')->nullable()->default(false);
             $table->boolean('is_deleted')->nullable()->default(false);
