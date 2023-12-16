@@ -58,6 +58,7 @@ class PegawaiController extends Controller
         $nik = $request->post('nik');
         $tgl_lahir = $request->post('tgl_lahir');
         $alamat = $request->post('alamat');
+        $is_active = $request->post('is-active');
 
         try {
             $model = new Pegawai();
@@ -74,6 +75,7 @@ class PegawaiController extends Controller
             $model->nik = $nik;
             $model->tgl_lahir = $tgl_lahir;
             $model->alamat = $alamat;
+            $model->is_active = $is_active;
             if ($model->validate()->save()) {
                 return ResponseHelpers::success(ConstantsHelper::STATUS_SUCCESS, ConstantsHelper::MSG_SUCCESS_SAVE, true);
             } else {
