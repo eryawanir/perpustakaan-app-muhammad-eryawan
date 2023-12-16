@@ -58,7 +58,7 @@ class PegawaiController extends Controller
         $nik = $request->post('nik');
         $tgl_lahir = $request->post('tgl_lahir');
         $alamat = $request->post('alamat');
-        $is_active = $request->post('is-active');
+        $is_active = $request->post('is_active');
 
         try {
             $model = new Pegawai();
