@@ -88,5 +88,24 @@ class PegawaiController extends Controller
 
     public function deleteDataPegawai(Request $request)
     {
+
+        $id = $request->get('id');
+        try {
+            $model = new Pegawai();
+            if($model->find($id) == null){
+                return ResponseHelpers::error(ConstantsHelper::STATUS_ERR_VALIDATION, 'Data tidak ditemukan!', false);
+            }
+            $model = $model->find($id);
+            $model->is_deleted = true;
+            if ($model->save()) {
+                return ResponseHelpers::success(ConstantsHelper::STATUS_SUCCESS, ConstantsHelper::MSG_SUCCESS_DELETE, true);
+            } else {
+                return ResponseHelpers::error(ConstantsHelper::STATUS_ERR_VALIDATION, ConstantsHelper::MSG_ERR_DELETE, false);
+            }
+
+        } catch (\Exception $e) {
+            return ResponseHelpers::error(ConstantsHelper::STATUS_ERR_SERVER, ConstantsHelper::MSG_ERR_SERVER, $e);
+        }
+
     }
 }
