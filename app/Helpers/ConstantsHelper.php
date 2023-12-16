@@ -16,6 +16,7 @@ class ConstantsHelper {
     const MSG_ERR_GET = 'Data tidak ditemukan!';
     const MSG_ERR_SAVE = 'Data gagal disimpan!';
     const MSG_ERR_DELETE = 'Data gagal dihapus!';
+    const MSG_ERR_VALIDATION = 'Input data dengan benar!';
 
 
 }

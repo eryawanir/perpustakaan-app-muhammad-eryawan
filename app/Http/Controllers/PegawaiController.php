@@ -8,6 +8,7 @@ use App\Models\Pegawai;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 
 class PegawaiController extends Controller
 {
@@ -73,11 +74,13 @@ class PegawaiController extends Controller
             $model->nik = $nik;
             $model->tgl_lahir = $tgl_lahir;
             $model->alamat = $alamat;
-            if ($model->save()) {
+            if ($model->validate()->save()) {
                 return ResponseHelpers::success(ConstantsHelper::STATUS_SUCCESS, ConstantsHelper::MSG_SUCCESS_SAVE, true);
             } else {
                 return ResponseHelpers::error(ConstantsHelper::STATUS_ERR_VALIDATION, ConstantsHelper::MSG_ERR_SAVE, false);
             }
+        } catch (\Exception $e) {
+            return ResponseHelpers::error(ConstantsHelper::STATUS_ERR_VALIDATION, ConstantsHelper::MSG_ERR_VALIDATION);
         } catch (\Exception $e) {
             return ResponseHelpers::error(ConstantsHelper::STATUS_ERR_SERVER, ConstantsHelper::MSG_ERR_SERVER, $e);
         }

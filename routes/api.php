@@ -30,4 +30,5 @@ Route::group(['prefix' => 'users'], function () {
 Route::group(['prefix' => 'pegawai'], function () {
     Route::get('get-data',  [PegawaiController::class, 'getDataPegawai']);
     Route::post('save-data',  [PegawaiController::class, 'saveDataPegawai']);
+    Route::delete('delete-data',  [PegawaiController::class, 'deletrDataPegawai']);
 });
