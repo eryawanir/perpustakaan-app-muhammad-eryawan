@@ -17,12 +17,5 @@ class ConstantsHelper {
     const MSG_ERR_SAVE = 'Data gagal disimpan!';
     const MSG_ERR_DELETE = 'Data gagal dihapus!';
 
-    static $status_lab = [
-        473 => 'Periksa',
-        474 => 'Ambil Sampel',
-        475 => 'Selesai',
-        476 => 'Batal',
-        477 => 'Belum Periksa',
-    ];
 
 }

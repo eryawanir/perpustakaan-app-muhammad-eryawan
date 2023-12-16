@@ -42,13 +42,13 @@ class PegawaiController extends Controller
 
             $query = $query->get();
             return ResponseHelpers::success(ConstantsHelper::STATUS_SUCCESS, ConstantsHelper::MSG_SUCCESS_GET, $query);
-
         } catch (\Exception $e) {
             return ResponseHelpers::error(ConstantsHelper::STATUS_ERR_SERVER, ConstantsHelper::MSG_ERR_SERVER, $e);
         }
     }
 
-    public function saveDataPegawai(Request $request) {
+    public function saveDataPegawai(Request $request)
+    {
 
         $id = $request->post('id');
         $nama_pegawai = $request->post('nama_pegawai');
@@ -58,23 +58,22 @@ class PegawaiController extends Controller
         $tgl_lahir = $request->post('tgl_lahir');
         $alamat = $request->post('alamat');
 
-        try{
+        try {
             $model = new Pegawai();
-            $model->id = $id;
+            if (isset($id)) {
+                $query = $model->find($id);
+                if ($query == null) {
+                    return ResponseHelpers::error(ConstantsHelper::STATUS_ERR_VALIDATION, ConstantsHelper::MSG_ERR_SAVE, false);
+                }
+                $model = $model->find($id);
+            }
             $model->nama_pegawai = $nama_pegawai;
             $model->no_telp = $no_telp;
             $model->email = $email;
             $model->nik = $nik;
             $model->tgl_lahir = $tgl_lahir;
             $model->alamat = $alamat;
-            if(isset($model->id)){
-                $query = $model->find($id);
-                if($query == null){
-                    return ResponseHelpers::error(ConstantsHelper::STATUS_ERR_VALIDATION, ConstantsHelper::MSG_ERR_SAVE, false);
-                }
-            }
-
-            if ($model->save(['id' => $id])) {
+            if ($model->save()) {
                 return ResponseHelpers::success(ConstantsHelper::STATUS_SUCCESS, ConstantsHelper::MSG_SUCCESS_SAVE, true);
             } else {
                 return ResponseHelpers::error(ConstantsHelper::STATUS_ERR_VALIDATION, ConstantsHelper::MSG_ERR_SAVE, false);
@@ -82,10 +81,9 @@ class PegawaiController extends Controller
         } catch (\Exception $e) {
             return ResponseHelpers::error(ConstantsHelper::STATUS_ERR_SERVER, ConstantsHelper::MSG_ERR_SERVER, $e);
         }
-
     }
 
-    public function deleteDataPegawai(Request $request){
-
+    public function deleteDataPegawai(Request $request)
+    {
     }
 }
