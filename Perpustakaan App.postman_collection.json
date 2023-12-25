@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "ed792198-df03-4db7-803a-8e20991fbf4f",
+		"_postman_id": "5c0d4be3-788f-4e4d-96ab-01db8794a2ac",
 		"name": "Perpustakaan App",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "8894770"
+		"_exporter_id": "29110665"
 	},
 	"item": [
 		{
@@ -264,6 +264,217 @@
 							"path": [
 								"api",
 								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Peminjaman",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "no_peminjaman",
+									"value": "2023ABC",
+									"type": "text"
+								},
+								{
+									"key": "books_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "pengunjung_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "pegawai_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/peminjamans",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"peminjamans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/peminjamans",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"peminjamans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "no_peminjaman",
+									"value": "KODE1245",
+									"type": "text"
+								},
+								{
+									"key": "books_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "pengunjung_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "pegawai_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/peminjamans/8",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"peminjamans",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "no_peminjaman",
+									"value": "2023ABCf",
+									"type": "text"
+								},
+								{
+									"key": "books_id",
+									"value": "76",
+									"type": "text"
+								},
+								{
+									"key": "pengunjung_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "pegawai_id",
+									"value": "22",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/peminjamans/16",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"peminjamans",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/peminjamans/7",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"peminjamans",
+								"7"
 							]
 						}
 					},

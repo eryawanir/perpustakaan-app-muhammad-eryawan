@@ -34,8 +34,25 @@ class PeminjamanT extends Model
         'pegawai_id' => 'required',
     ];
 
-    public function validate(){
+    public function validate()
+    {
         Validator::make($this->toArray(), $this->rules)->validate();
         return $this;
+    }
+
+    public function book()
+    {
+        // bagusnya book_id
+        return $this->belongsTo(Books::class, 'books_id');
+    }
+
+    public function pengunjung()
+    {
+        return $this->belongsTo(Pengunjung::class);
+    }
+
+    public function pegawai()
+    {
+        return $this->belongsTo(Pegawai::class);
     }
 }

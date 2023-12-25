@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Books;
+use App\Models\PeminjamanT;
 use Illuminate\Database\Seeder;
 
-class BooksSeeder extends Seeder
+class PeminjamanTSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class BooksSeeder extends Seeder
      */
     public function run()
     {
-        Books::factory()->count(10)->create();
+        PeminjamanT::factory()->count(5)->create();
     }
 }

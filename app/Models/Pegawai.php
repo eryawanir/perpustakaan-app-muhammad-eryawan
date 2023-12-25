@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class Pegawai extends Model
 {
+    use HasFactory;
     protected $primaryKey = 'id';
 
     protected $table    = 'pegawai';
@@ -34,7 +35,8 @@ class Pegawai extends Model
         'nik' => 'numeric'
     ];
 
-    public function validate(){
+    public function validate()
+    {
         Validator::make($this->toArray(), $this->rules)->validate();
         return $this;
     }

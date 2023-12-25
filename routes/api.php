@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\Pengunjung\PengunjungController;
+use App\Http\Controllers\Transaksi\PeminjamanController;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('register', [RegisterController::class, 'create']);
 Route::post('login', [AuthController::class, 'authenticate']);
 
-Route::group(['middleware' => ['jwt.verify']], function() {
+Route::group(['middleware' => ['jwt.verify']], function () {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::group(['prefix' => 'pegawai'], function () {
         Route::get('get-data',  [PegawaiController::class, 'getDataPegawai']);
@@ -47,3 +48,5 @@ Route::group(['prefix' => 'users'], function () {
     Route::put('update-data', [UserController::class, 'updateDataUser']);
     Route::delete('delete-data', [UserController::class, 'deleteDataUser']);
 });
+
+Route::apiResource('peminjamans', PeminjamanController::class);
